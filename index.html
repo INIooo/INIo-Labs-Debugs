@@ -3,136 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INIo Labs | S6 Clicker</title>
+    <title>INIo Labs | S6 Clicker by Rohan P.</title>
     <style>
         :root {
             --primary: #00d4ff;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text: #f8fafc;
+            --primary-hover: #00aacc;
+            --bg: #0b0e14;
+            --card-bg: #161b22;
+            --text: #ffffff;
+            --text-dim: #8b949e;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Header Section */
         header {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top, #1e293b 0%, #0b0e14 100%);
+        }
+
+        .logo-main {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -1px;
+            margin: 0;
+        }
+
+        /* Download Section */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 20px;
             padding: 4rem 2rem;
             text-align: center;
-            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            margin-top: -60px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
+        .version-badge {
+            background: rgba(0, 212, 255, 0.1);
             color: var(--primary);
-            letter-spacing: 2px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--primary);
         }
 
-        .download-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 3rem;
-            text-align: center;
-            border: 1px solid #334155;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-top: -50px;
-        }
-
-        .btn-download {
-            background-color: var(--primary);
+        .btn-main {
+            background: var(--primary);
             color: #000;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
             display: inline-block;
-            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
         }
 
-        .btn-download:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
         }
 
-        .about-section {
-            margin-top: 5rem;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 3rem;
+        /* Modal Logic */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
             align-items: center;
         }
 
-        .about-img {
-            width: 100%;
-            border-radius: 20px;
-            border: 2px solid var(--primary);
+        .modal {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            padding: 2.5rem;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
         }
 
-        .tag {
-            color: var(--primary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            font-weight: bold;
+        .modal-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-straight { background: #f0f6fc; color: #0d1117; }
+        .btn-github { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; }
+        .modal-btn:hover { opacity: 0.9; transform: scale(1.02); }
+
+        /* About Section */
+        .bio-section {
+            display: flex;
+            gap: 4rem;
+            padding: 6rem 0;
+            align-items: center;
+        }
+
+        .bio-text h2 { color: var(--primary); margin-top: 0; }
+        .bio-text p { color: var(--text-dim); font-size: 1.1rem; }
+
+        .bio-image {
+            min-width: 350px;
+            height: 350px;
+            background: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         footer {
             text-align: center;
-            padding: 3rem;
-            font-size: 0.8rem;
-            color: #64748b;
+            padding: 4rem 2rem;
+            border-top: 1px solid #30363d;
+            color: var(--text-dim);
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 768px) {
-            .about-section { grid-template-columns: 1fr; text-align: center; }
+        @media (max-width: 850px) {
+            .bio-section { flex-direction: column; text-align: center; }
+            .bio-image { min-width: 100%; height: 250px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">INIo LABS</div>
-    <p>High-Performance Game Engineering & Tools</p>
+    <h1 class="logo-main">INIo LABS</h1>
+    <p style="color: var(--text-dim);">Innovation in Gaming Automation</p>
 </header>
 
 <div class="container">
-    <section class="download-card">
-        <h2>S6 Clicker V1.1.2</h2>
-        <p>Experience the most advanced humanized auto-clicker. Minimalist, fast, and secure.</p>
-        <br>
-        <a href="YOUR_LINK_HERE" class="btn-download">DOWNLOAD NOW</a>
-        <p style="margin-top: 15px; font-size: 0.8rem; color: #94a3b8;">Windows 10/11 | 64-Bit | Requires Admin Rights</p>
+    <section class="hero-card">
+        <span class="version-badge">LATEST RELEASE V1.1.2</span>
+        <h2 style="font-size: 2.5rem; margin: 1rem 0;">S6 Clicker</h2>
+        <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto;">
+            A high-performance, humanized auto-clicker designed for precision. 
+            Features anti-detection logic, persistent settings, and a minimalistic UI.
+        </p>
+        <button class="btn-main" onclick="openModal()">DOWNLOAD NOW</button>
     </section>
 
-    <section class="about-section">
-        <div>
-            <div style="background: #334155; width: 100%; height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
-                <span style="color: var(--primary);">IMAGE PLACEHOLDER</span>
-            </div>
+    <section class="bio-section">
+        <div class="bio-image">
+            <span style="color: #30363d; font-weight: bold; font-size: 1.2rem;">ROHAN P.</span>
         </div>
-        <div>
-            <span class="tag">The Developer</span>
+        <div class="bio-text">
+            <h2>The Developer</h2>
             <h1>Hi, I'm Rohan P.</h1>
-            <p>I am a 14-year-old Game Developer with 6 years of experience. My journey started with the **Godot Engine**, where I learned the fundamentals of game architecture and scripting. Today, I am expanding my horizons by transitioning into **Unity** and creating standalone tools that enhance the gaming experience.</p>
-            <p>Under the brand **INIo Labs**, I build software that bridges the gap between performance and simplicity. S6 Clicker is my latest project, designed for users who demand precision and reliability.</p>
+            <p>
+                I am a 14-year-old developer based in India with over 6 years of experience in the game industry. 
+                Starting with the **Godot Engine** at age 8, I developed a deep passion for game architecture and 
+                system-level automation.
+            </p>
+            <p>
+                Currently, I am shifting my focus toward **Unity** while continuing to lead **INIo Labs**, 
+                where I create tools like S6 Clicker to help players optimize their experience safely and efficiently.
+            </p>
         </div>
     </section>
 </div>
 
+<div class="modal-overlay" id="downloadModal" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+        <h3 style="margin-top: 0;">Choose Download Method</h3>
+        <p style="color: var(--text-dim); font-size: 0.9rem;">The straight download includes the EXE, Manual, and Disclaimer in a ZIP bundle.</p>
+        
+        <a href="S6_Clicker_Bundle_V1.1.2.zip" class="modal-btn btn-straight">Straight Download (.ZIP)</a>
+        
+        <a href="https://github.com/INIooo/INIo-Labs-Debugs/" target="_blank" class="modal-btn btn-github">Download from GitHub</a>
+        
+        <button onclick="closeModal(event)" style="background: none; border: none; color: #6e7681; cursor: pointer; margin-top: 10px;">Cancel</button>
+    </div>
+</div>
+
 <footer>
-    &copy; 2025 INIo Labs. Created by Rohan P. All Rights Reserved.
+    &copy; 2025 INIo Labs. Hand-coded by Rohan P.
 </footer>
+
+<script>
+    function openModal() {
+        document.getElementById('downloadModal').style.display = 'flex';
+    }
+
+    function closeModal(e) {
+        document.getElementById('downloadModal').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
