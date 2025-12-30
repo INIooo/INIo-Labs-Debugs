@@ -1,0 +1,39 @@
+S6 Clicker V1.1.2 - User Manual
+Developer: INIo
+
+Version: 1.1.2 (AutoHotkey v2)
+
+1. Installation & Setup
+No Install Required: This is a portable application. You can run it from any folder.
+
+Administrator Privileges: You MUST right-click the .exe and select "Run as Administrator." Many games will ignore clicks from the app if it is not running with admin rights.
+
+Window Mode: For the best results, run your game in "Borderless Windowed" or "Windowed" mode.
+
+2. Controls & Hotkeys
+[1] (Number Key 1): Toggles the clicking system ON and OFF. You will hear a high beep for ON and a low beep for OFF.
+
+[Right Shift]: Hides the UI overlay from your screen. Press it again to bring the menu back.
+
+[Ctrl + Esc]: Instantly saves your current settings and exits the application.
+
+3. Feature Descriptions
+Click Delay (ms): The time between each click. Lower numbers are faster (e.g., 70ms).
+
+Hold Delay (ms): How long you must hold your mouse button down before the auto-clicking starts. Setting this to 500ms (0.5s) prevents accidental clicks while navigating menus.
+
+Humanized Anti-Cheat: When checked, the app randomizes the timing between clicks and the duration the button is held down. This makes the click pattern much harder for game security to detect.
+
+4. Persistence
+The app automatically creates a file named S6_Settings.ini in the same folder.
+
+This file stores your "Click Delay" and "Hold Delay" settings so you don't have to re-configure them every time you launch the app.
+
+Final Publishing Checklist for INIo
+EXE File: Your compiled S6Clicker.exe with the custom icon.
+
+Disclaimer: The DISCLAIMER.txt file.
+
+Manual: The USER_MANUAL.txt file.
+
+Packaging: Select all three files, right-click, and "Compress to ZIP file." Name it S6_Clicker_V1.1.2_INIo.zip
